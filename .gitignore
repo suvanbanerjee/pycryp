@@ -30,3 +30,6 @@ venv/
 
 # mypy
 .mypy_cache/
+
+#environment variables
+*.env
