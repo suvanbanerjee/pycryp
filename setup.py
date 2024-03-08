@@ -7,8 +7,8 @@ here = os.path.abspath(os.path.dirname(__file__))
 with codecs.open(os.path.join(here, "README.md"), encoding="utf-8") as fh:
     long_description = "\n" + fh.read()
 
-VERSION = '0.0.2'
-DESCRIPTION = 'package to encrypt and decrypt messages using AES-256-CBC'
+VERSION = '0.0.3'
+DESCRIPTION = 'package to encrypt and decrypt messages using AES '
 
 setup(
     name="pycryp",
@@ -19,7 +19,7 @@ setup(
     long_description_content_type="text/markdown",
     long_description=long_description,
     packages=find_packages(),
-    install_requires=[],
+    install_requires=['cryptography'],
     keywords=['python', 'aes', 'encryption', 'decryption', 'aes-256-cbc'],
     classifiers=[
         "Development Status :: 1 - Planning",
@@ -28,5 +28,5 @@ setup(
         "License :: OSI Approved :: MIT License",
         "Operating System :: OS Independent",
     ],
-    python_requires='>=3.3'
+    python_requires='>=3.5'
 )

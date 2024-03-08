@@ -42,11 +42,16 @@ def decrypt(message: bytes, password: str, salt: bytes = b'', iterations: int = 
     Returns:
         bytes: The decrypted message.
     """
-    # Checking if message and password are empty
-    if message or password == '':
+    #Checking if message and password are empty
+    if message == '' or password == '':
         raise ValueError('Message and Password cannot be empty')
     
-    password = password.encode()
+    #Converting message and password to bytes
+    if type(message) != bytes:
+        message = message.encode()
+    
+    if type(password) != bytes:
+        password = password.encode()
     try:
         # Key Derivation Function
         kdf = PBKDF2HMAC(

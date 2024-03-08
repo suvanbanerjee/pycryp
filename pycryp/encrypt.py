@@ -43,10 +43,15 @@ def encrypt(message: bytes, password: str, salt: bytes = b'', iterations: int = 
     """
     
     #Checking if message and password are empty
-    if message or password == '':
+    if message == '' or password == '':
         raise ValueError('Message and Password cannot be empty')
     
-    password = password.encode()
+    #Converting message and password to bytes
+    if type(message) != bytes:
+        message = message.encode()
+    
+    if type(password) != bytes:
+        password = password.encode()
 
     #Key Derivation Function
     kdf = PBKDF2HMAC(
@@ -61,3 +66,9 @@ def encrypt(message: bytes, password: str, salt: bytes = b'', iterations: int = 
     f = Fernet(key)
     
     return f.encrypt(message)
+
+def test():
+    print(encrypt('Hello World','password'))
+
+if __name__ == '__main__':
+    test()

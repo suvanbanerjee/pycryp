@@ -51,6 +51,8 @@ print(pycryp.decrypt(encrypted_message, password, salt, iterations, key_length))
 ### Note:
  The salt, iterations and key_length must be the same for both encryption and decryption. If you change the values for encryption, you must also change the values for decryption.
 
+ Message and password can be a string or a byte string. 
+
 ### Generating Password
 ```python
 import pycryp
