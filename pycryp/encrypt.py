@@ -66,9 +66,3 @@ def encrypt(message: bytes, password: str, salt: bytes = b'', iterations: int = 
     f = Fernet(key)
     
     return f.encrypt(message)
-
-def test():
-    print(encrypt('Hello World','password'))
-
-if __name__ == '__main__':
-    test()
