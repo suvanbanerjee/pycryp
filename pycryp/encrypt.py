@@ -27,7 +27,7 @@ from cryptography.hazmat.primitives.kdf.pbkdf2 import PBKDF2HMAC
 from cryptography.hazmat.backends import default_backend
 from cryptography.fernet import Fernet
 
-def encrypt(message: bytes, password: str, salt: bytes = b'', iterations: int = 100000, length: int = 32, algorithm: hashes.HashAlgorithm = hashes.SHA256()) -> bytes:
+def encrypt(message: bytes, password: str, salt: bytes = b'', iterations: int = 100000, length: int = 32) -> bytes:
     """
     Encrypts a message using a password and optional salt, iterations, length, and algorithm.
 
@@ -37,16 +37,20 @@ def encrypt(message: bytes, password: str, salt: bytes = b'', iterations: int = 
         salt (bytes, optional): The salt used for key derivation. Defaults to b''.
         iterations (int, optional): The number of iterations for key derivation. Defaults to 100000.
         length (int, optional): The length of the derived key. Defaults to 32.
-        algorithm (cryptography.hazmat.primitives.hashes.HashAlgorithm, optional): The hash algorithm used for key derivation. Defaults to hashes.SHA256().
     
     Returns:
         bytes: The encrypted message.
     """
+    
+    #Checking if message and password are empty
+    if message or password == '':
+        raise ValueError('Message and Password cannot be empty')
+    
     password = password.encode()
 
     #Key Derivation Function
     kdf = PBKDF2HMAC(
-        algorithm,
+        algorithm=hashes.SHA256(),
         length=length,
         salt=salt,
         iterations=iterations,
