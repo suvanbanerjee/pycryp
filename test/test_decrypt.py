@@ -1,7 +1,7 @@
 import unittest
 import pycryp
 
-class EncryptTest(unittest.TestCase):
+class DecryptTest(unittest.TestCase):
     def test_decrypt(self):
         message = b"gAAAAABl6tKMHTOnvP2O0pGx1WutCqbg-4EeDi5YL2JvA64RK3DJgsyp4QTSzUy8igdt9x1HWiJXdmu5-fG_-obcJwDykXQLrQ=="
         password = "password"

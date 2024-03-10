@@ -34,4 +34,6 @@ def generate_salt(length: int = 16) -> bytes:
     Returns:
     - bytes: The generated salt.
     """
+    if length < 1:
+        raise ValueError('The length of the salt must be at least 1')
     return os.urandom(length)

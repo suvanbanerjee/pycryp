@@ -39,6 +39,10 @@ def generate_password(length: int = 12, upper: bool = True, lower: bool = True, 
     Returns:
         str: The randomly generated password.
     """
+    if length < 1:
+        raise ValueError('The length of the password must be at least 1')
+    if not upper and not lower and not digits and not punctuation:
+        raise ValueError('At least one of the character types must be True')
     password = ''
     if upper:
         password += string.ascii_uppercase
@@ -48,5 +52,16 @@ def generate_password(length: int = 12, upper: bool = True, lower: bool = True, 
         password += string.digits
     if punctuation:
         password += string.punctuation
-    
-    return ''.join(random.sample(password, length))
+    while True:
+        try:
+            return ''.join(random.sample(password, length))
+        except:
+            if upper:
+                password += string.ascii_uppercase
+            if lower:
+                password += string.ascii_lowercase
+            if digits:
+                password += string.digits
+            if punctuation:
+                password += string.punctuation
+            continue

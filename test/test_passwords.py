@@ -53,5 +53,7 @@ class PasswordsTest(unittest.TestCase):
         self.assertFalse(any(char.isdigit() for char in password))
         self.assertTrue(any(char in string.punctuation for char in password))
 
+    
+
 if __name__ == '__main__':
     unittest.main()
