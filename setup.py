@@ -7,7 +7,7 @@ here = os.path.abspath(os.path.dirname(__file__))
 with codecs.open(os.path.join(here, "README.md"), encoding="utf-8") as fh:
     long_description = "\n" + fh.read()
 
-VERSION = '0.2.0'
+VERSION = '0.2.1'
 DESCRIPTION = 'package to encrypt and decrypt messages'
 
 setup(
@@ -15,6 +15,7 @@ setup(
     version=VERSION,
     author="Suvan Banerjee",
     author_email="<banerjeesuvan@gmail.com>",
+    url = "https://github.com/suvanbanerjee/pycryp",
     description=DESCRIPTION,
     long_description_content_type="text/markdown",
     long_description=long_description,
